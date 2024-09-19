@@ -1,10 +1,19 @@
 require('dotenv').config()
 const express = require('express')
+const cors = require('cors')
 const app = express()
 const authRouter = require('./routers/auth-router')
 const contactRouter = require('./routers/contact-router')
 const connectDb = require('./utils/db')
 const errorMiddleware = require('./middlewares/error-middleware')
+
+const corsOption = {
+    origin:'http://localhost:5173',
+    methods:'GET, PUT, POST, PATCH, DELETE, HEAD',
+    credentials:true
+}
+
+app.use(cors(corsOption))
 
 app.use(express.json())
 
