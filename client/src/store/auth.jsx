@@ -1,10 +1,13 @@
+/* eslint-disable react/prop-types */
 import { createContext, useContext, useState} from "react";
 
 export const AuthContext = createContext()
 
 export const AuthProvider = ({children}) =>{
-    const [token,setToken] = useState("")
+    const [token,setToken] = useState(localStorage.getItem('token'))
+    const authorizationToken = token
     let isLoggedIn = !!token
+    const Api = `http://localhost:5000/api`
 
     const storeTokenInLS = (serverToken)=>{
         setToken(serverToken)
@@ -16,7 +19,7 @@ export const AuthProvider = ({children}) =>{
         return localStorage.removeItem('token')
     }
 
-    return <AuthContext.Provider value={{storeTokenInLS,LogOut,isLoggedIn}}>
+    return <AuthContext.Provider value={{storeTokenInLS,LogOut,isLoggedIn,Api,authorizationToken}}>
         {children}
         </AuthContext.Provider>
 }

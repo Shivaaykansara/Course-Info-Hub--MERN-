@@ -45,4 +45,13 @@ const login = async(req,res)=>{
     }
 }
 
-module.exports = {register,login}
+const user = async(req,res)=>{
+    try {
+        const userData = req.user;
+        return res.status(200).json({userData})
+    } catch (error) {
+        res.status(400).json({msg:error})
+    }
+}
+
+module.exports = {register,login,user}
