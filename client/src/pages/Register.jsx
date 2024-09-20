@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../store/auth";
+import {  toast } from 'react-toastify';
 
 const preData = {
   username:"",
@@ -34,15 +35,15 @@ const Register = () => {
       body:JSON.stringify(user)
     })
 
+    const res_data = await response.json()
     if(response.ok){
-      alert("Registeration successfull")
-      const res_data = await response.json()
+      toast("Registeration successfull")
       storeTokenInLS(res_data.token)
       console.log(response)
       setUser(preData)
     }
     else{
-      alert("Registration unsuccessfull")
+      toast(res_data.extraDetails?res_data.extraDetails:res_data.msg)
     }
   }
 

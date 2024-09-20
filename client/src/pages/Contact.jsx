@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 
@@ -9,35 +9,20 @@ const preData = {
 }
 
 const Login = () => {
-  const {Api,authorizationToken} = useAuth()
+  const [userData,setUserData] = useState(true)
+  const {user} = useAuth()
   const [contact,setContact] = useState(preData)
   const navigate = useNavigate()
 
-  const getUser = async()=>{
-    try {
-      const response = await fetch(`${Api}/auth/user`,{
-        method:'GET',
-        headers:{
-          Authorization:authorizationToken
-        }
-      })
-
-      if(response.ok){
-        const data = await response.json()
-        setContact({
-          username:data.userData.username,
-          email:data.userData.email
-        })
-        console.log(data)
-      }
-    } catch (error) {
-      console.log(error)
-    }
+  if(user && userData){
+    setContact({
+      username:user.username,
+      email:user.email,
+      message:""
+    })
+    setUserData(false)
   }
 
-  useEffect(()=>{
-    getUser()
-  },[])
 
   const handleInput = (e) =>{
     let name = e.target.name
