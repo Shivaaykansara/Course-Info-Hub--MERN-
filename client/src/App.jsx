@@ -1,5 +1,6 @@
 import './App.css'
 import { AppLayout } from './components/layout/AppLayout'
+import { AdminLayout } from './components/layout/AdminLayout'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -11,6 +12,10 @@ import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import { Logout } from './pages/Logout';
+import AdminHome from './pages/AdminHome';
+import AdminUsers from './pages/AdminUsers';
+import AdminCourses from './pages/AdminCourses';
+import AdminContacts from './pages/AdminContacts';
 
 function App() {
 
@@ -46,6 +51,28 @@ function App() {
         },
       ]
     },
+    {
+      path:'/admin',
+      element:<AdminLayout/>,
+      children:[
+        {
+          path:'/admin',
+          element:<AdminHome/>
+        },
+        {
+          path:'/admin/users',
+          element:<AdminUsers/>
+        },
+        {
+          path:'/admin/coursesInfo',
+          element:<AdminCourses/>
+        },
+        {
+          path:'/admin/contacts',
+          element:<AdminContacts/>
+        },
+      ]
+    }
   ]);
   return (
     <>

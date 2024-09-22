@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
-import { Footer } from "./Footer"
-import { Nav } from "./Nav"
+import { Footer } from "../ui/Footer"
+import { Nav } from "../ui/Nav"
 
 export const AppLayout = () => {
   return (
