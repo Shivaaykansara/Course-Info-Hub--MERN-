@@ -13,8 +13,13 @@ import AdminHome from "./pages/AdminHome";
 import AdminUsers from "./pages/AdminUsers";
 import AdminCourses from "./pages/AdminCourses";
 import AdminContacts from "./pages/AdminContacts";
+import PrivateRoute from "./components/PrivateRoute";
+import { useAuth } from "./store/auth";
 
 function App() {
+  const{user} = useAuth()
+
+  const isAuthenticated = user.isAdmin;
   const router = createBrowserRouter([
     {
       path: "/",
@@ -45,24 +50,29 @@ function App() {
       path: "/admin",
       element: <AdminLayout />,
       children: [
-        {
-          path: "/admin",
-          element: <AdminHome />,
-        },
+        { path: "/admin", element: (
+          <PrivateRoute element={<AdminHome />} isAuthenticated={isAuthenticated} />
+        ), },
         {
           path: "/admin/users",
-          element: <AdminUsers />,
+          element: (
+            <PrivateRoute element={<AdminUsers />} isAuthenticated={isAuthenticated} />
+          ),
         },
         {
           path: "/admin/coursesInfo",
-          element: <AdminCourses />,
+          element: (
+            <PrivateRoute element={<AdminCourses />} isAuthenticated={isAuthenticated} />
+          ),
         },
         {
           path: "/admin/contacts",
-          element: <AdminContacts />,
+          element: (
+            <PrivateRoute element={<AdminContacts />} isAuthenticated={isAuthenticated} />
+          ),
         },
       ],
-    }
+    },
   ]);
   return (
     <>
