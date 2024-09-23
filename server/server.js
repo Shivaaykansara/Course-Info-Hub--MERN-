@@ -25,9 +25,11 @@ app.use('/api/info',courseRouter)
 app.use('/api/admin',adminRouter)
 
 app.use(errorMiddleware)
+
+const port = process.env.PORT || 5000
 connectDb().then(()=>{
-    app.listen(5000,()=>{
-        console.log('listening on Port 5000')
+    app.listen(port,()=>{
+        console.log(`listening on Port ${port}`)
     })
 })
     
