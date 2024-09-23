@@ -9,24 +9,13 @@ const adminRouter = require('./routers/admin-router')
 const connectDb = require('./utils/db')
 const errorMiddleware = require('./middlewares/error-middleware')
 
+const corsOption = {
+    origin:'https://course-info-hub-mern-frontend.onrender.com',
+    methods:'GET, PUT, POST, PATCH, DELETE, HEAD',
+    credentials:true
+}
 
-const corsOptions = {
-    origin: (origin, callback) => {
-      const allowedOrigins = [
-        "https://course-info-hub-mern-frontend.onrender.com",
-          'https://superb-dodol-85b8a8.netlify.app',
-        'https://course-info-hub-mern.onrender.com',
-        
-
-      ];
-      const isAllowed = allowedOrigins.includes(origin);
-      callback(null, isAllowed ? origin : false);
-    },
-    methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
-    credentials: true,
-  };
-
-app.use(cors(corsOptions))
+app.use(cors(corsOption))
 
 app.use(express.json())
 

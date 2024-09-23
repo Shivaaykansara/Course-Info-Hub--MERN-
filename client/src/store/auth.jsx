@@ -10,7 +10,8 @@ export const AuthProvider = ({children}) =>{
     const [isLoading,setIsLoading] = useState(true)
     const authorizationToken = token
     let isLoggedIn = !!token
-    const Api = `https://course-info-hub-mern.onrender.com`
+    // const Api = `https://course-info-hub-mern.onrender.com`
+    const Api = "https://course-info-hub-mern-baackend.onrender.com"
 
     const storeTokenInLS = (serverToken)=>{
         setToken(serverToken)

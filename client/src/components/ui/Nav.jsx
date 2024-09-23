@@ -4,7 +4,7 @@ import { useAuth } from "../../store/auth";
 
 export const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const {isLoggedIn} = useAuth();
+  const { isLoggedIn } = useAuth();
 
   return (
     <div className="bg-gray-900">
@@ -48,7 +48,6 @@ export const Nav = () => {
             title="Company"
             className="inline-flex items-center lg:mx-auto"
           >
-  
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -81,41 +80,41 @@ export const Nav = () => {
               </NavLink>
             </li>
 
-            {
-              isLoggedIn?<li>
-              <NavLink
-                to="/logout"
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                aria-label="Logout"
-                title="Logout"
-              >
-                Logout
-              </NavLink>
-            </li>:<>
-            <li>
-              <NavLink
-                to="/login"
-                aria-label="Login"
-                title="Login"
-                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-              >
-                Login
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/register"
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                aria-label="Register"
-                title="Register"
-              >
-                Register
-              </NavLink>
-            </li>
-            </>
-            }
-
-            
+            {isLoggedIn ? (
+              <li>
+                <NavLink
+                  to="/logout"
+                  className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                  aria-label="Logout"
+                  title="Logout"
+                >
+                  Logout
+                </NavLink>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <NavLink
+                    to="/login"
+                    aria-label="Login"
+                    title="Login"
+                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                  >
+                    Login
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/register"
+                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                    aria-label="Register"
+                    title="Register"
+                  >
+                    Register
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
           <div className="ml-auto lg:hidden">
             <button
@@ -218,38 +217,42 @@ export const Nav = () => {
                           Contact Us
                         </NavLink>
                       </li>
-                      {isLoggedIn?<li>
-                        <NavLink
-                          to="/logout"
-                          className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                          aria-label="Logout"
-                          title="Logout"
-                        >
-                          Logout
-                        </NavLink>
-                      </li>:<>
-                      <li>
-                        <NavLink
-                          to="/login"
-                          aria-label="Login"
-                          title="Login"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                          Login
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          to="/register"
-                          className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                          aria-label="Register"
-                          title="Register"
-                        >
-                          Register
-                        </NavLink>
-                      </li>
-                      </>}
-                      
+                      {isLoggedIn ?  (
+                          <li>
+                            <NavLink
+                              to="/logout"
+                              className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                              aria-label="Logout"
+                              title="Logout"
+                            >
+                              Logout
+                            </NavLink>
+                          </li>
+                        )
+                       : (
+                        <>
+                          <li>
+                            <NavLink
+                              to="/login"
+                              aria-label="Login"
+                              title="Login"
+                              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                            >
+                              Login
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to="/register"
+                              className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                              aria-label="Register"
+                              title="Register"
+                            >
+                              Register
+                            </NavLink>
+                          </li>
+                        </>
+                      )}
                     </ul>
                   </nav>
                 </div>
