@@ -14,8 +14,9 @@ const corsOptions = {
     origin: (origin, callback) => {
       const allowedOrigins = [
         "http://localhost:5173",
+          'https://superb-dodol-85b8a8.netlify.app',
         'https://course-info-hub-mern.onrender.com',
-        'https://superb-dodol-85b8a8.netlify.app',
+        
 
       ];
       const isAllowed = allowedOrigins.includes(origin);
