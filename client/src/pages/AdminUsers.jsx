@@ -9,11 +9,11 @@ const AdminUsers = () => {
     email: "",
     phone: "",
   });
-  const {authorizationToken} = useAuth()
+  const {authorizationToken,Api} = useAuth()
   const deleteUser = async (id) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/admin/users/delete/${id}`,
+        `${Api}/api/admin/users/delete/${id}`,
         {
           method: "DELETE",
           headers:{
@@ -50,7 +50,7 @@ const AdminUsers = () => {
 
   const handleSubmit = async() => {
     try {
-        const response = await fetch(`http://localhost:5000/api/admin/users/update`,{
+        const response = await fetch(`${Api}/api/admin/users/update`,{
             method:'PATCH',
             headers:{
                 'Content-Type':'application/json',
@@ -68,7 +68,7 @@ const AdminUsers = () => {
 
   const getAllUsers = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/admin/users", {
+      const response = await fetch(`${Api}/api/admin/users`, {
         method: "GET",
           headers:{
             Authorization:authorizationToken

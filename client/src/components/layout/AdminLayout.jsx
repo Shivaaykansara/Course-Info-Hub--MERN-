@@ -15,12 +15,11 @@ export const AdminLayout = () => {
   if(!user.isAdmin){
     return <Navigate to='/'/>
   }
-  return (
-<>
+  return (<div>
       <AdminNav/>
       <Outlet/>
       <Footer/>
-      </>
+      </div>
   )
 }
 

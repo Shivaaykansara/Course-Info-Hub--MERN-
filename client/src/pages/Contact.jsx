@@ -10,7 +10,7 @@ const preData = {
 
 const Login = () => {
   const [userData,setUserData] = useState(true)
-  const {user} = useAuth()
+  const {user,Api} = useAuth()
   const [contact,setContact] = useState(preData)
   const navigate = useNavigate()
 console.log(user)
@@ -36,7 +36,7 @@ console.log(user)
 
   const handleSubmit = async(e) =>{
     e.preventDefault()
-    const response = await fetch('http://localhost:5000/api/form/contact',{
+    const response = await fetch(`${Api}/api/form/contact`,{
       method:'POST',
       headers:{
         'Content-Type':'application/json'

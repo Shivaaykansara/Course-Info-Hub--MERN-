@@ -9,7 +9,7 @@ const AdminCourses = () => {
       category: "",
       price: "",
     });
-    const {authorizationToken} = useAuth()
+    const {authorizationToken,Api} = useAuth()
 
     const updateCourse = (curCourse) => {
       document.getElementById("my_modal_1").showModal();
@@ -32,7 +32,7 @@ const AdminCourses = () => {
   
     const handleSubmit = async() => {
       try {
-          const response = await fetch(`http://localhost:5000/api/admin/courses/update`,{
+          const response = await fetch(`${Api}/api/admin/courses/update`,{
               method:'PATCH',
               headers:{
                   'Content-Type':'application/json',
@@ -52,7 +52,7 @@ const AdminCourses = () => {
 
     const deleteCourse = async(id)=>{
         try {
-            const response = await fetch(`http://localhost:5000/api/admin/coursesInfo/delete/${id}`,{
+            const response = await fetch(`${Api}/api/admin/coursesInfo/delete/${id}`,{
                 method:'DELETE',
                 headers:{
                   Authorization:authorizationToken
@@ -69,7 +69,7 @@ const AdminCourses = () => {
 
     const getAllCourses = async()=>{
         try {
-            const response = await fetch('http://localhost:5000/api/admin/coursesInfo',{
+            const response = await fetch(`${Api}/api/admin/coursesInfo`,{
                 method:"GET",
                 headers:{
                     'Content-Type':'application/json',

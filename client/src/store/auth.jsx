@@ -10,7 +10,7 @@ export const AuthProvider = ({children}) =>{
     const [isLoading,setIsLoading] = useState(true)
     const authorizationToken = token
     let isLoggedIn = !!token
-    const Api = `http://localhost:5000/api`
+    const Api = `https://course-info-hub-mern.onrender.com`
 
     const storeTokenInLS = (serverToken)=>{
         setToken(serverToken)
@@ -25,7 +25,7 @@ export const AuthProvider = ({children}) =>{
 
     const getCourses = async()=>{
         try {
-            const response = await fetch('http://localhost:5000/api/info/courses',{
+            const response = await fetch(`${Api}/api/info/courses`,{
                 method:"GET",
                 headers:{
                     'Content-Type':'application/json'
@@ -42,7 +42,7 @@ export const AuthProvider = ({children}) =>{
     const authentication = async()=>{
         try {
             setIsLoading(true)
-          const response = await fetch(`${Api}/auth/user`,{
+          const response = await fetch(`${Api}/api/auth/user`,{
             method:'GET',
             headers:{
               Authorization:authorizationToken

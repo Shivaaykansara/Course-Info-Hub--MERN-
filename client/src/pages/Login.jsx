@@ -9,7 +9,7 @@ const preData = {
 }
 
 const Login = () => {
-  const {storeTokenInLS} = useAuth()
+  const {storeTokenInLS,Api} = useAuth()
   const [user,setUser] = useState(preData)
   const navigate = useNavigate()
 
@@ -25,7 +25,7 @@ const Login = () => {
 
   const handleSubmit = async(e) =>{
     e.preventDefault()
-    const response = await fetch('http://localhost:5000/api/auth/login',{
+    const response = await fetch(`${Api}/api/auth/login`,{
       method:'POST',
       headers:{
         'Content-Type':'application/json'

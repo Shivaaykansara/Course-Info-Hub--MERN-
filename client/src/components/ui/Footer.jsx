@@ -1,5 +1,6 @@
 export const Footer = () => {
   return (
+    <>
     <footer className="footer bg-neutral text-neutral-content items-center p-4">
       <aside className="grid-flow-col items-center">
         <svg
@@ -51,5 +52,6 @@ export const Footer = () => {
         </a>
       </nav>
     </footer>
+    </>
   );
 };

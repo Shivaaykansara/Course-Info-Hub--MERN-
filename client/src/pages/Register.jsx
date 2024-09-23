@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../store/auth";
 import {  toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 
 const preData = {
   username:"",
@@ -10,8 +11,9 @@ const preData = {
 }
 
 const Register = () => {
+  const navigate = useNavigate()
 
-  const {storeTokenInLS} = useAuth()
+  const {storeTokenInLS,Api} = useAuth()
 
   const [user,setUser] = useState(preData)
 
@@ -27,7 +29,7 @@ const Register = () => {
 
   const handleSubmit = async(e) =>{
     e.preventDefault()
-    const response = await fetch('http://localhost:5000/api/auth/register',{
+    const response = await fetch(`${Api}/api/auth/register`,{
       method:'POST',
       headers:{
         'Content-Type':'application/json'
@@ -41,6 +43,7 @@ const Register = () => {
       storeTokenInLS(res_data.token)
       console.log(response)
       setUser(preData)
+      navigate('/')
     }
     else{
       toast(res_data.extraDetails?res_data.extraDetails:res_data.msg)
