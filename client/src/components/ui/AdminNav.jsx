@@ -67,7 +67,7 @@ export const AdminNav = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <NavLink to='/logout' className="btn">Logout</NavLink>
+          <NavLink to='/' className="btn">Logout</NavLink>
         </div>
       </div>
     </div>

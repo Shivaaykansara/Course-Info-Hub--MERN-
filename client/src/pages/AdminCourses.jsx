@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../store/auth";
 
 const AdminCourses = () => {
     const [allCourses,setAllCourses] = useState([])
@@ -8,6 +9,7 @@ const AdminCourses = () => {
       category: "",
       price: "",
     });
+    const {authorizationToken} = useAuth()
 
     const updateCourse = (curCourse) => {
       document.getElementById("my_modal_1").showModal();
@@ -33,7 +35,10 @@ const AdminCourses = () => {
           const response = await fetch(`http://localhost:5000/api/admin/courses/update`,{
               method:'PATCH',
               headers:{
-                  'Content-Type':'application/json'
+                  'Content-Type':'application/json',
+                  
+                    Authorization:authorizationToken
+                  
               },
               body:JSON.stringify(editCourse)
           })
@@ -49,6 +54,9 @@ const AdminCourses = () => {
         try {
             const response = await fetch(`http://localhost:5000/api/admin/coursesInfo/delete/${id}`,{
                 method:'DELETE',
+                headers:{
+                  Authorization:authorizationToken
+                }
                 
             })
             if(response.ok){
@@ -64,7 +72,8 @@ const AdminCourses = () => {
             const response = await fetch('http://localhost:5000/api/admin/coursesInfo',{
                 method:"GET",
                 headers:{
-                    'Content-Type':'application/json'
+                    'Content-Type':'application/json',
+                    Authorization:authorizationToken
                 }
             })
             if(response.ok){

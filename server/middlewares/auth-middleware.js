@@ -6,7 +6,6 @@ const authMiddleware = async(req,res,next)=>{
     if(!token){
         return res.status(400).json({msg:"Unauthorized HTTP, token not provided"})
     }
-
     const jwtToken = token.replace("Bearer","").trim()
     try {
         const isVerified = jwt.verify(jwtToken,process.env.JWT_TOKEN)
@@ -16,7 +15,9 @@ const authMiddleware = async(req,res,next)=>{
         req.userId = userData._id
         next()
     } catch (error) {
-        console.log(error)
+        return res.status(401).json({
+            message: "Unauthorized Invalid token",
+          });
     }
 }
 

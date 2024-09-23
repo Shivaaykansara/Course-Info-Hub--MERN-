@@ -13,7 +13,7 @@ const Login = () => {
   const {user} = useAuth()
   const [contact,setContact] = useState(preData)
   const navigate = useNavigate()
-
+console.log(user)
   if(user && userData){
     setContact({
       username:user.username,

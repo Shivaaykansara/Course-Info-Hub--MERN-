@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../store/auth";
 
 const AdminUsers = () => {
   const [allUsers, setAllUsers] = useState([]);
@@ -8,13 +9,16 @@ const AdminUsers = () => {
     email: "",
     phone: "",
   });
-
+  const {authorizationToken} = useAuth()
   const deleteUser = async (id) => {
     try {
       const response = await fetch(
         `http://localhost:5000/api/admin/users/delete/${id}`,
         {
           method: "DELETE",
+          headers:{
+            Authorization:authorizationToken
+          }
         }
       );
       if (response.ok) {
@@ -49,7 +53,8 @@ const AdminUsers = () => {
         const response = await fetch(`http://localhost:5000/api/admin/users/update`,{
             method:'PATCH',
             headers:{
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                Authorization:authorizationToken
             },
             body:JSON.stringify(editUser)
         })
@@ -65,6 +70,10 @@ const AdminUsers = () => {
     try {
       const response = await fetch("http://localhost:5000/api/admin/users", {
         method: "GET",
+          headers:{
+            Authorization:authorizationToken
+          }
+        
       });
       if (response.ok) {
         const data = await response.json();
