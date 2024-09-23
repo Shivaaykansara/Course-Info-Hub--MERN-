@@ -10,7 +10,7 @@ const connectDb = require('./utils/db')
 const errorMiddleware = require('./middlewares/error-middleware')
 
 const corsOption = {
-    origin:'https://course-info-hub-mern-frontend.onrender.com',
+    origin:'https://coursesinfohub.netlify.app/',
     methods:'GET, PUT, POST, PATCH, DELETE, HEAD',
     credentials:true
 }
