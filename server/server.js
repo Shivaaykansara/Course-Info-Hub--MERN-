@@ -10,7 +10,7 @@ const connectDb = require('./utils/db')
 const errorMiddleware = require('./middlewares/error-middleware')
 
 const corsOption = {
-    origin:'http://localhost:5173',
+    origin:'https://course-info-hub-mern.onrender.com',
     methods:'GET, PUT, POST, PATCH, DELETE, HEAD',
     credentials:true
 }
